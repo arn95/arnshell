@@ -82,7 +82,28 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/aballiu/ClionProjects/arnshell/main.cpp">
+		<Unit filename="/Users/aballiu/ClionProjects/arnshell/driver.c">
+			<Option target="arnshell"/>
+		</Unit>
+		<Unit filename="/Users/aballiu/ClionProjects/arnshell/driver.h">
+			<Option target="arnshell"/>
+		</Unit>
+		<Unit filename="/Users/aballiu/ClionProjects/arnshell/helpers.c">
+			<Option target="arnshell"/>
+		</Unit>
+		<Unit filename="/Users/aballiu/ClionProjects/arnshell/helpers.h">
+			<Option target="arnshell"/>
+		</Unit>
+		<Unit filename="/Users/aballiu/ClionProjects/arnshell/string.c">
+			<Option target="arnshell"/>
+		</Unit>
+		<Unit filename="/Users/aballiu/ClionProjects/arnshell/string.h">
+			<Option target="arnshell"/>
+		</Unit>
+		<Unit filename="/Users/aballiu/ClionProjects/arnshell/tokenizer.c">
+			<Option target="arnshell"/>
+		</Unit>
+		<Unit filename="/Users/aballiu/ClionProjects/arnshell/tokenizer.h">
 			<Option target="arnshell"/>
 		</Unit>
 		<Unit filename="/Users/aballiu/ClionProjects/arnshell/CMakeLists.txt">

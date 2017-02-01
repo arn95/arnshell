@@ -123,32 +123,113 @@ arnshell/fast:
 	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/build
 .PHONY : arnshell/fast
 
-main.o: main.cpp.o
+driver.o: driver.c.o
 
-.PHONY : main.o
+.PHONY : driver.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/main.cpp.o
-.PHONY : main.cpp.o
+driver.c.o:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/driver.c.o
+.PHONY : driver.c.o
 
-main.i: main.cpp.i
+driver.i: driver.c.i
 
-.PHONY : main.i
+.PHONY : driver.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/main.cpp.i
-.PHONY : main.cpp.i
+driver.c.i:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/driver.c.i
+.PHONY : driver.c.i
 
-main.s: main.cpp.s
+driver.s: driver.c.s
 
-.PHONY : main.s
+.PHONY : driver.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/main.cpp.s
-.PHONY : main.cpp.s
+driver.c.s:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/driver.c.s
+.PHONY : driver.c.s
+
+helpers.o: helpers.c.o
+
+.PHONY : helpers.o
+
+# target to build an object file
+helpers.c.o:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/helpers.c.o
+.PHONY : helpers.c.o
+
+helpers.i: helpers.c.i
+
+.PHONY : helpers.i
+
+# target to preprocess a source file
+helpers.c.i:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/helpers.c.i
+.PHONY : helpers.c.i
+
+helpers.s: helpers.c.s
+
+.PHONY : helpers.s
+
+# target to generate assembly for a file
+helpers.c.s:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/helpers.c.s
+.PHONY : helpers.c.s
+
+string.o: string.c.o
+
+.PHONY : string.o
+
+# target to build an object file
+string.c.o:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/string.c.o
+.PHONY : string.c.o
+
+string.i: string.c.i
+
+.PHONY : string.i
+
+# target to preprocess a source file
+string.c.i:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/string.c.i
+.PHONY : string.c.i
+
+string.s: string.c.s
+
+.PHONY : string.s
+
+# target to generate assembly for a file
+string.c.s:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/string.c.s
+.PHONY : string.c.s
+
+tokenizer.o: tokenizer.c.o
+
+.PHONY : tokenizer.o
+
+# target to build an object file
+tokenizer.c.o:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/tokenizer.c.o
+.PHONY : tokenizer.c.o
+
+tokenizer.i: tokenizer.c.i
+
+.PHONY : tokenizer.i
+
+# target to preprocess a source file
+tokenizer.c.i:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/tokenizer.c.i
+.PHONY : tokenizer.c.i
+
+tokenizer.s: tokenizer.c.s
+
+.PHONY : tokenizer.s
+
+# target to generate assembly for a file
+tokenizer.c.s:
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/tokenizer.c.s
+.PHONY : tokenizer.c.s
 
 # Help Target
 help:
@@ -159,9 +240,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... arnshell"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... driver.o"
+	@echo "... driver.i"
+	@echo "... driver.s"
+	@echo "... helpers.o"
+	@echo "... helpers.i"
+	@echo "... helpers.s"
+	@echo "... string.o"
+	@echo "... string.i"
+	@echo "... string.s"
+	@echo "... tokenizer.o"
+	@echo "... tokenizer.i"
+	@echo "... tokenizer.s"
 .PHONY : help
 
 

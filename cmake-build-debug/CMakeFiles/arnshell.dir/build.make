@@ -57,41 +57,119 @@ include CMakeFiles/arnshell.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/arnshell.dir/flags.make
 
-CMakeFiles/arnshell.dir/main.cpp.o: CMakeFiles/arnshell.dir/flags.make
-CMakeFiles/arnshell.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/arnshell.dir/main.cpp.o"
-	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/arnshell.dir/main.cpp.o -c /Users/aballiu/ClionProjects/arnshell/main.cpp
+CMakeFiles/arnshell.dir/driver.c.o: CMakeFiles/arnshell.dir/flags.make
+CMakeFiles/arnshell.dir/driver.c.o: ../driver.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/arnshell.dir/driver.c.o"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/arnshell.dir/driver.c.o   -c /Users/aballiu/ClionProjects/arnshell/driver.c
 
-CMakeFiles/arnshell.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/arnshell.dir/main.cpp.i"
-	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aballiu/ClionProjects/arnshell/main.cpp > CMakeFiles/arnshell.dir/main.cpp.i
+CMakeFiles/arnshell.dir/driver.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/arnshell.dir/driver.c.i"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aballiu/ClionProjects/arnshell/driver.c > CMakeFiles/arnshell.dir/driver.c.i
 
-CMakeFiles/arnshell.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/arnshell.dir/main.cpp.s"
-	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aballiu/ClionProjects/arnshell/main.cpp -o CMakeFiles/arnshell.dir/main.cpp.s
+CMakeFiles/arnshell.dir/driver.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/arnshell.dir/driver.c.s"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aballiu/ClionProjects/arnshell/driver.c -o CMakeFiles/arnshell.dir/driver.c.s
 
-CMakeFiles/arnshell.dir/main.cpp.o.requires:
+CMakeFiles/arnshell.dir/driver.c.o.requires:
 
-.PHONY : CMakeFiles/arnshell.dir/main.cpp.o.requires
+.PHONY : CMakeFiles/arnshell.dir/driver.c.o.requires
 
-CMakeFiles/arnshell.dir/main.cpp.o.provides: CMakeFiles/arnshell.dir/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/main.cpp.o.provides.build
-.PHONY : CMakeFiles/arnshell.dir/main.cpp.o.provides
+CMakeFiles/arnshell.dir/driver.c.o.provides: CMakeFiles/arnshell.dir/driver.c.o.requires
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/driver.c.o.provides.build
+.PHONY : CMakeFiles/arnshell.dir/driver.c.o.provides
 
-CMakeFiles/arnshell.dir/main.cpp.o.provides.build: CMakeFiles/arnshell.dir/main.cpp.o
+CMakeFiles/arnshell.dir/driver.c.o.provides.build: CMakeFiles/arnshell.dir/driver.c.o
+
+
+CMakeFiles/arnshell.dir/helpers.c.o: CMakeFiles/arnshell.dir/flags.make
+CMakeFiles/arnshell.dir/helpers.c.o: ../helpers.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/arnshell.dir/helpers.c.o"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/arnshell.dir/helpers.c.o   -c /Users/aballiu/ClionProjects/arnshell/helpers.c
+
+CMakeFiles/arnshell.dir/helpers.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/arnshell.dir/helpers.c.i"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aballiu/ClionProjects/arnshell/helpers.c > CMakeFiles/arnshell.dir/helpers.c.i
+
+CMakeFiles/arnshell.dir/helpers.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/arnshell.dir/helpers.c.s"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aballiu/ClionProjects/arnshell/helpers.c -o CMakeFiles/arnshell.dir/helpers.c.s
+
+CMakeFiles/arnshell.dir/helpers.c.o.requires:
+
+.PHONY : CMakeFiles/arnshell.dir/helpers.c.o.requires
+
+CMakeFiles/arnshell.dir/helpers.c.o.provides: CMakeFiles/arnshell.dir/helpers.c.o.requires
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/helpers.c.o.provides.build
+.PHONY : CMakeFiles/arnshell.dir/helpers.c.o.provides
+
+CMakeFiles/arnshell.dir/helpers.c.o.provides.build: CMakeFiles/arnshell.dir/helpers.c.o
+
+
+CMakeFiles/arnshell.dir/tokenizer.c.o: CMakeFiles/arnshell.dir/flags.make
+CMakeFiles/arnshell.dir/tokenizer.c.o: ../tokenizer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/arnshell.dir/tokenizer.c.o"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/arnshell.dir/tokenizer.c.o   -c /Users/aballiu/ClionProjects/arnshell/tokenizer.c
+
+CMakeFiles/arnshell.dir/tokenizer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/arnshell.dir/tokenizer.c.i"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aballiu/ClionProjects/arnshell/tokenizer.c > CMakeFiles/arnshell.dir/tokenizer.c.i
+
+CMakeFiles/arnshell.dir/tokenizer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/arnshell.dir/tokenizer.c.s"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aballiu/ClionProjects/arnshell/tokenizer.c -o CMakeFiles/arnshell.dir/tokenizer.c.s
+
+CMakeFiles/arnshell.dir/tokenizer.c.o.requires:
+
+.PHONY : CMakeFiles/arnshell.dir/tokenizer.c.o.requires
+
+CMakeFiles/arnshell.dir/tokenizer.c.o.provides: CMakeFiles/arnshell.dir/tokenizer.c.o.requires
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/tokenizer.c.o.provides.build
+.PHONY : CMakeFiles/arnshell.dir/tokenizer.c.o.provides
+
+CMakeFiles/arnshell.dir/tokenizer.c.o.provides.build: CMakeFiles/arnshell.dir/tokenizer.c.o
+
+
+CMakeFiles/arnshell.dir/string.c.o: CMakeFiles/arnshell.dir/flags.make
+CMakeFiles/arnshell.dir/string.c.o: ../string.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/arnshell.dir/string.c.o"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/arnshell.dir/string.c.o   -c /Users/aballiu/ClionProjects/arnshell/string.c
+
+CMakeFiles/arnshell.dir/string.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/arnshell.dir/string.c.i"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/aballiu/ClionProjects/arnshell/string.c > CMakeFiles/arnshell.dir/string.c.i
+
+CMakeFiles/arnshell.dir/string.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/arnshell.dir/string.c.s"
+	/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/aballiu/ClionProjects/arnshell/string.c -o CMakeFiles/arnshell.dir/string.c.s
+
+CMakeFiles/arnshell.dir/string.c.o.requires:
+
+.PHONY : CMakeFiles/arnshell.dir/string.c.o.requires
+
+CMakeFiles/arnshell.dir/string.c.o.provides: CMakeFiles/arnshell.dir/string.c.o.requires
+	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/string.c.o.provides.build
+.PHONY : CMakeFiles/arnshell.dir/string.c.o.provides
+
+CMakeFiles/arnshell.dir/string.c.o.provides.build: CMakeFiles/arnshell.dir/string.c.o
 
 
 # Object files for target arnshell
 arnshell_OBJECTS = \
-"CMakeFiles/arnshell.dir/main.cpp.o"
+"CMakeFiles/arnshell.dir/driver.c.o" \
+"CMakeFiles/arnshell.dir/helpers.c.o" \
+"CMakeFiles/arnshell.dir/tokenizer.c.o" \
+"CMakeFiles/arnshell.dir/string.c.o"
 
 # External object files for target arnshell
 arnshell_EXTERNAL_OBJECTS =
 
-arnshell: CMakeFiles/arnshell.dir/main.cpp.o
+arnshell: CMakeFiles/arnshell.dir/driver.c.o
+arnshell: CMakeFiles/arnshell.dir/helpers.c.o
+arnshell: CMakeFiles/arnshell.dir/tokenizer.c.o
+arnshell: CMakeFiles/arnshell.dir/string.c.o
 arnshell: CMakeFiles/arnshell.dir/build.make
 arnshell: CMakeFiles/arnshell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable arnshell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable arnshell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/arnshell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -99,7 +177,10 @@ CMakeFiles/arnshell.dir/build: arnshell
 
 .PHONY : CMakeFiles/arnshell.dir/build
 
-CMakeFiles/arnshell.dir/requires: CMakeFiles/arnshell.dir/main.cpp.o.requires
+CMakeFiles/arnshell.dir/requires: CMakeFiles/arnshell.dir/driver.c.o.requires
+CMakeFiles/arnshell.dir/requires: CMakeFiles/arnshell.dir/helpers.c.o.requires
+CMakeFiles/arnshell.dir/requires: CMakeFiles/arnshell.dir/tokenizer.c.o.requires
+CMakeFiles/arnshell.dir/requires: CMakeFiles/arnshell.dir/string.c.o.requires
 
 .PHONY : CMakeFiles/arnshell.dir/requires
 
