@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include "memwatch.h"
+#include "memwatch.h"
 
 void abort1(char *s){
     fprintf(stderr, "%s\n", s);

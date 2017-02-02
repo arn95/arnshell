@@ -4,18 +4,15 @@
 CMakeFiles/arnshell.dir/driver.c.o: ../driver.c
 CMakeFiles/arnshell.dir/driver.c.o: ../driver.h
 CMakeFiles/arnshell.dir/driver.c.o: ../helpers.h
+CMakeFiles/arnshell.dir/driver.c.o: ../memwatch.h
 CMakeFiles/arnshell.dir/driver.c.o: ../string.h
-CMakeFiles/arnshell.dir/driver.c.o: ../tokenizer.h
 
 CMakeFiles/arnshell.dir/helpers.c.o: ../helpers.c
 CMakeFiles/arnshell.dir/helpers.c.o: ../helpers.h
+CMakeFiles/arnshell.dir/helpers.c.o: ../memwatch.h
 
 CMakeFiles/arnshell.dir/string.c.o: ../helpers.h
+CMakeFiles/arnshell.dir/string.c.o: ../memwatch.h
 CMakeFiles/arnshell.dir/string.c.o: ../string.c
 CMakeFiles/arnshell.dir/string.c.o: ../string.h
-
-CMakeFiles/arnshell.dir/tokenizer.c.o: ../helpers.h
-CMakeFiles/arnshell.dir/tokenizer.c.o: ../string.h
-CMakeFiles/arnshell.dir/tokenizer.c.o: ../tokenizer.c
-CMakeFiles/arnshell.dir/tokenizer.c.o: ../tokenizer.h
 

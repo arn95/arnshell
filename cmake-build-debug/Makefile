@@ -204,33 +204,6 @@ string.c.s:
 	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/string.c.s
 .PHONY : string.c.s
 
-tokenizer.o: tokenizer.c.o
-
-.PHONY : tokenizer.o
-
-# target to build an object file
-tokenizer.c.o:
-	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/tokenizer.c.o
-.PHONY : tokenizer.c.o
-
-tokenizer.i: tokenizer.c.i
-
-.PHONY : tokenizer.i
-
-# target to preprocess a source file
-tokenizer.c.i:
-	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/tokenizer.c.i
-.PHONY : tokenizer.c.i
-
-tokenizer.s: tokenizer.c.s
-
-.PHONY : tokenizer.s
-
-# target to generate assembly for a file
-tokenizer.c.s:
-	$(MAKE) -f CMakeFiles/arnshell.dir/build.make CMakeFiles/arnshell.dir/tokenizer.c.s
-.PHONY : tokenizer.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -249,9 +222,6 @@ help:
 	@echo "... string.o"
 	@echo "... string.i"
 	@echo "... string.s"
-	@echo "... tokenizer.o"
-	@echo "... tokenizer.i"
-	@echo "... tokenizer.s"
 .PHONY : help
 
 

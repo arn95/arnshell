@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/arnshell.dir/driver.c.o"
   "CMakeFiles/arnshell.dir/helpers.c.o"
-  "CMakeFiles/arnshell.dir/tokenizer.c.o"
   "CMakeFiles/arnshell.dir/string.c.o"
   "arnshell.pdb"
   "arnshell"

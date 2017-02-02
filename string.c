@@ -7,45 +7,12 @@
 #include <printf.h>
 #include "string.h"
 #include "helpers.h"
+#include "memwatch.h"
 
-struct sString{
-    int size;
-    char* buffer;
-};
-
-#define STRING_SIZE (sizeof(struct sString))
-
-String string_init(char* str){
-    int size = (int) strlen(str);
-    String s = (String) check_malloc(STRING_SIZE);
-    s->buffer = check_malloc(size*sizeof(char));
-    strcpy(s->buffer, str);
-    s->size = size;
-    return s;
-}
-
-String string_init_empty(){
-    int size = 1;
-    String s = (String) check_malloc(STRING_SIZE);
-    s->buffer = check_malloc(size*sizeof(char));
-    s->size = size;
-    return s;
-}
-
-
-
-String string_append(String s, char* item){
-    int new_size = (int) (s->size + strlen(item)) * sizeof(char);
-    s->buffer = check_realloc(s->buffer, new_size);
-    s->size = new_size;
-    strcat(s->buffer, item);
-    return s;
-}
-
-int string_char_index(String s, char c){
+int string_char_index(char* buf, char c){
     char* p;
     int count = 0;
-    for(p = s->buffer; *p != '\0'; p++){
+    for(p = buf; *p != '\0'; p++){
         if (p[0] == c){
             return count;
         }
@@ -54,60 +21,26 @@ int string_char_index(String s, char c){
     return -1;
 }
 
-String string_cut(String s, int index){
-    char* p;
+void string_cut(char** s, char** slice, int index){
+    char* str = *s;
     int count = 0;
     char store[index+1];
-    for(p=s->buffer; *p != '\0'; p++){
-        char c_now = p[0];
+    for(; *str != '\0'; str++){
         if(count == index){
-            s->buffer = p;
             break;
         }
-        store[count] = p[0];
+        store[count] = str[0];
         count++;
     }
-    store[++count] = '\0';
-    return string_init(store);
+    *s = str;
+    store[count] = 0;
+    strcpy(*slice, store);
 }
 
-String string_copy(String dest, char* src){
-    int new_size = (int) (dest->size + strlen(src)) * sizeof(char);
-    dest->buffer = check_malloc(new_size);
-    dest->size = new_size;
-    strcpy(dest->buffer, src);
-    return dest;
-}
-
-String string_dup(String s){
-    String new = string_init(s->buffer);
-    return new;
-}
-
-char* string_char_at(String s, int index){
-    return strchr(s->buffer, index);
-}
-
-
-char* string_buffer(String s){
-    return s->buffer;
-}
-
-int string_size(String s){
-    return s->size;
-}
-
-void string_print(String s){
-    printf("%s", s->buffer);
-}
-
-void string_destroy(String s){
-    free(s);
-}
-
-String* string_tokenize(String input, char delim){
-    String* string_array = check_malloc(input->size* sizeof(String));
-    String input_dup = string_dup(input);
+char** string_tokenize(char* input, char delim, int* size){
+    int len = (int)strlen(input);
+    char** str_a = check_malloc(len*sizeof(char*));
+    char* input_dup = strdup(input);
     //preliminary cleanup
     string_trim(input_dup);
     int count = 0;
@@ -116,42 +49,44 @@ String* string_tokenize(String input, char delim){
         if (index == -1){
             break;
         } else if (index == 0){
-            string_trim_leading(input_dup);
+            input_dup = string_trim_leading(input_dup);
         } else {
-            String cut_string = string_cut(input_dup, index);
-            string_array[count++] = cut_string;
+            char* slice = (char*) check_malloc((index+1)* sizeof(char));
+            string_cut(&input_dup,&slice, index);
+            str_a[count++] = slice;
         }
     }
     if (!string_is_empty(input_dup)){
-        string_array[count] = string_dup(input_dup);
-        string_destroy(input_dup);
+        str_a[count++] = strdup(input_dup);
+        //free(input_dup);
     }
-
-    return string_array;
+    *size = count;
+    str_a = check_realloc(str_a, (count)* sizeof(char*));
+    return str_a;
 }
 
-String string_trim_leading(String s){
-    while (isspace(*s->buffer)){
-        s->buffer++;
+char* string_trim_leading(char* s){
+    while (isspace(*s)){
+        s = ++s;
     }
     return s;
 }
 
-String string_trim_trailing(String s){
-    char* end = s->buffer + strlen(s->buffer) - 1;
-    while(end > s->buffer && isspace((unsigned char)*end)) end--;
+char* string_trim_trailing(char* s){
+    char* end = s + strlen(s) - 1;
+    while(end > s && isspace((unsigned char)*end)) end--;
     *(end+1) = 0;
     return s;
 }
 
-String string_trim(String s){
+char* string_trim(char* s){
     string_trim_leading(s);
     string_trim_trailing(s);
     return s;
 }
 
-BOOLEAN string_is_empty(String s){
-    if(*s->buffer != '\0' || *s->buffer != ' ')
+BOOLEAN string_is_empty(char* s){
+    if(*s != '\0')
         return FALSE;
     else
         return TRUE;

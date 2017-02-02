@@ -100,12 +100,6 @@
 		<Unit filename="/Users/aballiu/ClionProjects/arnshell/string.h">
 			<Option target="arnshell"/>
 		</Unit>
-		<Unit filename="/Users/aballiu/ClionProjects/arnshell/tokenizer.c">
-			<Option target="arnshell"/>
-		</Unit>
-		<Unit filename="/Users/aballiu/ClionProjects/arnshell/tokenizer.h">
-			<Option target="arnshell"/>
-		</Unit>
 		<Unit filename="/Users/aballiu/ClionProjects/arnshell/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

@@ -2,6 +2,8 @@
 // Created by Arnold Balliu on 1/31/17.
 //
 
+#include "string.h"
+
 #ifndef ARNSHELL_DRIVER_H
 #define ARNSHELL_DRIVER_H
 
@@ -12,6 +14,8 @@ int cat(char* path);
 
 int echo();
 
-char** parse_cmd();
+char** parse_cmd(int* size_p);
+
+int run_shell(int argc, char* argv[]);
 
 void run_proc();

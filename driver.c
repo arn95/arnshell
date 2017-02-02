@@ -7,26 +7,62 @@
 #include <memory.h>
 #include "driver.h"
 #include "helpers.h"
-#include "tokenizer.h"
+#include "memwatch.h"
+#include "string.h"
+
+const char* prog_name = "arnshell";
 
 int main(int argc, char* argv[]){
-    //run_shell(argc, argv);
-    //printf("%s", tokenize("hello world", ' '));
-    //char** result = tokenize("hello world", ' ');
-    String s = string_init("     hello        world what's up everybody yeee     ahh     ");
-    String* str_a = string_tokenize(s, ' ');
-    string_print(str_a[0]);
-    string_print(str_a[1]);
-    string_print(str_a[2]);
-    string_print(str_a[3]);
-    string_destroy(s);
+//    String s = string_init("     hello        world what's up everybody yeee     ahh     ");
+//    int size = 0;
+//    int* size_p;
+//    size_p = &size;
+//    String* str_a = string_tokenize(s, ' ', size_p);
+//    int i;
+//    printf("Tokens\n");
+//    for(i = 0; i<=*size_p; i++){
+//        printf("%s\n", string_buffer(str_a[i]));
+//        string_destroy(str_a[i]);
+//    }
+//    free(str_a);
+//    string_destroy(s);
+    run_shell(argc, argv);
 }
 
 int run_shell(int argc, char* argv[]){
-    char* user_input = (char*) malloc(100*sizeof(char));
-    while (1){
-
+    printf("%s λ ", prog_name);
+    int size = 0; int* size_p; size_p = &size;
+    char** tokens = parse_cmd(size_p);
+    int i;
+    printf("Tokens\n");
+    for(i = 0; i<*size_p; i++){
+        printf("%s\n", tokens[i]);
+        free(tokens[i]);
     }
+    free(tokens);
+}
+
+char** parse_cmd(int* size_p){
+//    int BUFFER_SIZE = 100;
+//    char* cmd_store = (char*)check_malloc(BUFFER_SIZE* sizeof(char));
+//    int count = 0;
+//    while(1){
+//        int c = getchar();
+//        if(c == EOF){
+//            cmd_store[count] = 0;
+//            break;
+//        }
+//        cmd_store[count] = (char)c;
+//        if (count == BUFFER_SIZE - 2){
+//            BUFFER_SIZE += BUFFER_SIZE;
+//            cmd_store = (char*)check_realloc(cmd_store, BUFFER_SIZE);
+//        }
+//        count++;
+//    }
+    char** tokens = string_tokenize("hello asd sad dsa  as asd asd as das", ' ', size_p);
+    //char** tokens = string_tokenize(cmd_store, ' ', size_p);
+    //free(cmd_store);
+    return tokens;
 }
 
 
@@ -55,10 +91,6 @@ int cat(char* path){
 }
 
 int echo(){
-
-}
-
-char** parse_cmd(){
 
 }
 

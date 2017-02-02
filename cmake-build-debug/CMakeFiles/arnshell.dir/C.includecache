@@ -17,10 +17,14 @@ driver.h
 /Users/aballiu/ClionProjects/arnshell/driver.h
 helpers.h
 /Users/aballiu/ClionProjects/arnshell/helpers.h
-tokenizer.h
-/Users/aballiu/ClionProjects/arnshell/tokenizer.h
+memwatch.h
+/Users/aballiu/ClionProjects/arnshell/memwatch.h
+string.h
+/Users/aballiu/ClionProjects/arnshell/string.h
 
 /Users/aballiu/ClionProjects/arnshell/driver.h
+string.h
+/Users/aballiu/ClionProjects/arnshell/string.h
 
 /Users/aballiu/ClionProjects/arnshell/helpers.c
 helpers.h
@@ -29,8 +33,14 @@ stdio.h
 -
 stdlib.h
 -
+memwatch.h
+/Users/aballiu/ClionProjects/arnshell/memwatch.h
 
 /Users/aballiu/ClionProjects/arnshell/helpers.h
+
+/Users/aballiu/ClionProjects/arnshell/memwatch.h
+stdlib.h
+-
 
 /Users/aballiu/ClionProjects/arnshell/string.c
 memory.h
@@ -43,24 +53,10 @@ string.h
 /Users/aballiu/ClionProjects/arnshell/string.h
 helpers.h
 /Users/aballiu/ClionProjects/arnshell/helpers.h
+memwatch.h
+/Users/aballiu/ClionProjects/arnshell/memwatch.h
 
 /Users/aballiu/ClionProjects/arnshell/string.h
 helpers.h
 /Users/aballiu/ClionProjects/arnshell/helpers.h
-
-/Users/aballiu/ClionProjects/arnshell/tokenizer.c
-memory.h
--
-stdlib.h
--
-tokenizer.h
-/Users/aballiu/ClionProjects/arnshell/tokenizer.h
-helpers.h
-/Users/aballiu/ClionProjects/arnshell/helpers.h
-string.h
-/Users/aballiu/ClionProjects/arnshell/string.h
-
-/Users/aballiu/ClionProjects/arnshell/tokenizer.h
-string.h
-/Users/aballiu/ClionProjects/arnshell/string.h
 

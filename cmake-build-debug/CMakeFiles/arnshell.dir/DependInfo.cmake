@@ -7,7 +7,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/aballiu/ClionProjects/arnshell/driver.c" "/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles/arnshell.dir/driver.c.o"
   "/Users/aballiu/ClionProjects/arnshell/helpers.c" "/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles/arnshell.dir/helpers.c.o"
   "/Users/aballiu/ClionProjects/arnshell/string.c" "/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles/arnshell.dir/string.c.o"
-  "/Users/aballiu/ClionProjects/arnshell/tokenizer.c" "/Users/aballiu/ClionProjects/arnshell/cmake-build-debug/CMakeFiles/arnshell.dir/tokenizer.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
