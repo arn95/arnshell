@@ -12,10 +12,10 @@
 
 int cat(char* path);
 
-int echo();
+int echo(char*);
 
 char** parse_cmd(int* size_p);
 
-int run_shell(int argc, char* argv[]);
+int run_shell();
 
-void run_proc();
+int run_proc(char**, int);

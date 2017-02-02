@@ -15,7 +15,7 @@ char** string_tokenize(char* input, char delim, int* size);
 char* string_trim_leading(char*);
 char* string_trim_trailing(char*);
 char* string_trim(char*);
-void string_cut(char** s, char** slice, int index);
+char* string_cut(char* s, char** slice, int index);
 BOOLEAN string_is_empty(char* s);
 
 

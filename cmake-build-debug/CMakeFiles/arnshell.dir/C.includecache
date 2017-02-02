@@ -13,6 +13,8 @@ printf.h
 -
 memory.h
 -
+zconf.h
+-
 driver.h
 /Users/aballiu/ClionProjects/arnshell/driver.h
 helpers.h
