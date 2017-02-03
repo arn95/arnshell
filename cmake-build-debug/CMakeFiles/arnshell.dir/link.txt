@@ -1,1 +1,0 @@
-/Applications/Xcode-Beta-8.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/arnshell.dir/driver.c.o CMakeFiles/arnshell.dir/helpers.c.o CMakeFiles/arnshell.dir/string.c.o  -o arnshell 
