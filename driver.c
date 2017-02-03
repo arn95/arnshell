@@ -6,6 +6,7 @@
 #include <printf.h>
 #include <memory.h>
 #include <zconf.h>
+
 #include <stdio.h>
 #include "driver.h"
 #include "helpers.h"
@@ -30,6 +31,7 @@ int main(int argc, char* argv[]){
 int run_shell(){
     int status;
     while(1){
+
         printf("%s α ", prog_name);
         int size = 0; int* size_p; size_p = &size;
 
@@ -38,7 +40,7 @@ int run_shell(){
         if (tokens != NULL){
             status = run_proc(tokens, *size_p);
             if (status == INVALID_CMD){
-                //printf("%s λ ", prog_name);
+	        //printf("%s λ ", prog_name);
                 exit(1);
             }
 
@@ -85,6 +87,7 @@ char** parse_cmd(int* size_p){
     free(cmd_store);
     return NULL;
 }
+
 
 
 int cat(char** paths, int size){

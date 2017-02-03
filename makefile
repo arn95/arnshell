@@ -2,6 +2,7 @@ CC = gcc -g -Wall
 #
 # -g debug flag
 #
+
 shell: driver.o helpers.o string.o
 	$(CC) -o shell driver.o helpers.o string.o
 driver.o: driver.c driver.h
