@@ -53,7 +53,6 @@ int run_shell(){
             free(tokens);
         }
     }
-    //cat("memwatch.log");
 }
 
 char** parse_cmd(int* size_p){
@@ -207,6 +206,39 @@ int sys_proc(char** argv, int argc, int redir, int has_pipe){
         waitpid(pid1, 0, 0);
         waitpid(pid2,0,0);
     }
+    return 1;
+}
+
+int cat(char** paths, int size){
+    int i;
+    for(i = 1; i<size; i++){
+        char linebuf[4096];
+        FILE *file = fopen(paths[i], "r");
+        if (file != NULL){
+            while (fgets(linebuf, sizeof(linebuf), file)) {
+                //fprintf(stdout, "%s", linebuf);
+                printf(linebuf);
+            }
+            //fprintf(stdout, "\n");
+            printf("\n");
+        } else {
+            perror("File cannot be opened");
+        }
+        fclose(file);
+    }
+}
+
+int echo(char** thing, int size){
+    int i;
+    for(i = 1; i<size; i++){
+        char* temp = thing[i];
+        //fprintf(stdout, "%s", thing[i]);
+        printf(thing[i]);
+        if (i+1 < size){
+            printf(" ");
+        }
+    }
+    printf("\n");
     return 1;
 }
 
