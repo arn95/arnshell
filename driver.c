@@ -111,53 +111,102 @@ char** parse_cmd(int* size_p){
     return NULL;
 }
 
-int sys_proc(char** argv, int argc, int redir){
+int sys_proc(char** argv, int argc, int redir, int has_pipe){
 
     int status;
     int pid;
-    pid=fork();
-    if(pid<0) {
-        perror("Failed fork");
-        exit(1);
-    } else if (pid==0) {
-        //printf("Child pid: %d\n",getpid());
 
-        if (redir != -1){
-            char* output = strdup(argv[redir+1]);
+    if (has_pipe == -1){
+        pid=fork();
+        if(pid<0) {
+            perror("Failed fork");
+            exit(1);
+        } else if (pid==0) {
+            //printf("Child pid: %d\n",getpid());
 
-            //clean argv
-            int i;
-            for(i = redir; i<argc; i++){
-                free(argv[i]);
-                argv[i] = NULL;
+            if (redir != -1){
+                char* output = strdup(argv[redir+1]);
+
+                //clean argv
+                int i;
+                for(i = redir; i<argc; i++){
+                    free(argv[i]);
+                    argv[i] = NULL;
+                }
+
+                int fd = creat(output, 0644);
+                if (fd < 0){
+                    perror("Failed to open output file");
+                    exit(0);
+                }
+                dup2(fd,STDOUT_FILENO);
+                close(fd);
+                free(output);
             }
 
-            int fd = creat(output, 0644);
-            if (fd < 0){
-                perror("Failed to open output file");
-                exit(0);
+            if (argc > 1)
+                status = execvp(argv[0], argv);
+            else if (argc == 1) {
+                argv[1] = NULL;
+                argv[2] = NULL;
+                status = execvp(argv[0], argv);
             }
-            dup2(fd,STDOUT_FILENO);
-            close(fd);
-            free(output);
-        }
-
-        if (argc > 1)
-            status = execvp(argv[0], argv);
-        else if (argc == 1) {
-            argv[1] = NULL;
-            argv[2] = NULL;
-            status = execvp(argv[0], argv);
-        }
-        if (status == -1) {
-            perror("Invalid command");
-            return status;
+            if (status == -1) {
+                perror("Invalid command");
+                return status;
+            }
+        } else {
+            waitpid(pid,&status,0);
+            if (pipe != -1){
+                int pipes[2];
+                dup2(pipes[1], 1);
+                close(pipes[0]);
+            }
+            return 0;
         }
     } else {
-        waitpid(pid,&status,0);
-        return 0;
-    }
+        int pipes[2];
+        pipe(pipes);
+        char** argv1 = check_malloc(argc* sizeof(char*));
+        char** argv2 = check_malloc(argc* sizeof(char*));
+        int i;
+        for (i = 0; i<has_pipe; i++){
+            argv1[i] = strdup(argv[i]);
+        }
+        argv1[has_pipe] = NULL;
+        int count = 0;
+        for (i = has_pipe+1; i<argc; i++){
+            argv2[count++] = strdup(argv[i]);
+        }
+        argv2[count] = NULL;
+        int pid1 = fork();
+        if (pid1 == 0) {
+            close((int) stdout);
+            close(pipes[0]);
+            dup2(pipes[1], (int) stdout);
+            execvp(argv1[0], argv1);
+            for (i = 0; i<has_pipe; i++){
+                free(argv1[i]);
+            }
+            free(argv1);
+        }
+        int pid2 = fork();
+        if (pid2 == 0) {
+            close((int) stdin);
+            close(pipes[1]);
+            dup2(pipes[0], (int) stdin);
+            execvp(argv2[0], argv2);
+            for (i = 0; i<count; i++){
+                free(argv2[i]);
+            }
+            free(argv2);
+        }
 
+        close(pipes[0]);
+        close(pipes[1]);
+        waitpid(pid1, 0, 0);
+        waitpid(pid2,0,0);
+    }
     return 1;
 }
 
@@ -173,14 +222,27 @@ int check_redir(char** argv, int argc){
     return -1;
 }
 
+int check_pipe(char** argv, int argc){
+    int i;
+    for(i = 0; i<argc; i++){
+        if(strcmp(argv[i], "|") == 0){
+            if (i+1 < argc){
+                return i;
+            }
+        }
+    }
+    return -1;
+}
+
 int run_proc(char* argv[], int argc){
-    int status = check_redir(argv,argc);
+    int redir_status = check_redir(argv,argc);
+    int pipe_status = check_pipe(argv, argc);
 
     if (argc != 0){
         if (strcmp(argv[0], "exit") == 0)
             exit(1);
         else {
-            return sys_proc(argv, argc, status);
+            return sys_proc(argv, argc, redir_status, pipe_status);
         }
     }
     return NO_CMD;

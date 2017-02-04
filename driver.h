@@ -19,4 +19,4 @@ int run_shell();
 
 int run_proc(char**, int);
 
-int sys_proc(char** argv, int argc, int redir);
+int sys_proc(char** argv, int argc, int, int);
