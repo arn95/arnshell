@@ -18,6 +18,7 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 
+
 const char* prog_name = "arnshell";
 const int INVALID_CMD = -1;
 const int NO_CMD = -2;
@@ -147,8 +148,6 @@ int echo(char** thing, int size){
 
 int sys_proc(char** argv, int argc, int redir){
 
-    int fd = NULL;
-
     int status;
     int pid;
     pid=fork();
@@ -159,13 +158,23 @@ int sys_proc(char** argv, int argc, int redir){
         //printf("Child pid: %d\n",getpid());
 
         if (redir != -1){
-            fd = creat(argv[redir+1], 0644);
+            char* output = strdup(argv[redir+1]);
+
+            //clean argv
+            int i;
+            for(i = redir; i<argc; i++){
+                free(argv[i]);
+                argv[i] = NULL;
+            }
+
+            int fd = creat(output, 0644);
             if (fd < 0){
                 perror("Failed to open output file");
                 exit(0);
             }
             dup2(fd,STDOUT_FILENO);
             close(fd);
+            free(output);
         }
 
         if (argc > 1)
