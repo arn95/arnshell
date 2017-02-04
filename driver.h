@@ -15,7 +15,7 @@ int echo(char**,int);
 
 char** parse_cmd(int* size_p);
 
-int run_shell();
+int run_shell(char**, int);
 
 int run_proc(char**, int);
 

@@ -24,35 +24,51 @@ const int INVALID_CMD = -1;
 const int NO_CMD = -2;
 
 int main(int argc, char* argv[]){
-    run_shell();
+    run_shell(argv, argc);
     return 0;
 }
 
-int run_shell(){
+int run_shell(char** argv, int argc){
     int status;
-    while(1){
+    if (argc != 0){
+        //clean argv
+        int i;
+        for(i = 0; i<argc-1; i++){
+            argv[i] = argv[i+1];
+        }
+        argv[argc-1] = NULL;
+        argc = argc -1;
+        status = run_proc(argv, argc);
+        if (status == INVALID_CMD){
+            //printf("%s λ ", prog_name);
+            exit(1);
+        } else {
+            run_shell(NULL, 0);
+        }
+    } else {
+        while(1){
+            int size = 0; int* size_p; size_p = &size;
+            printf("%s λ ", prog_name);
+            char** tokens = parse_cmd(size_p);
+            char* t1 = tokens[0];
+            char* t2 = tokens[1];
+            if (tokens != NULL){
+                status = run_proc(tokens, *size_p);
+                if (status == INVALID_CMD){
+                    //printf("%s λ ", prog_name);
+                    exit(1);
+                }
 
-        printf("%s α ", prog_name);
-        int size = 0; int* size_p; size_p = &size;
-
-        char** tokens = parse_cmd(size_p);
-        char* t1 = tokens[0];
-        char* t2 = tokens[1];
-        if (tokens != NULL){
-            status = run_proc(tokens, *size_p);
-            if (status == INVALID_CMD){
-	        //printf("%s λ ", prog_name);
-                exit(1);
+                int i;
+                for(i = 0; i<*size_p; i++){
+                    char* temp = tokens[i];
+                    free(temp);
+                }
+                free(tokens);
             }
-
-            int i;
-            for(i = 0; i<*size_p; i++){
-                char* temp = tokens[i];
-                free(temp);
-            }
-            free(tokens);
         }
     }
+
 }
 
 char** parse_cmd(int* size_p){
