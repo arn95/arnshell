@@ -76,7 +76,7 @@ char** string_tokenize(char* input, char delim, int* size, int mode){
     }
     free(input_dup);
     *size = count;
-    str_a = check_realloc(str_a, (count)* sizeof(char*));
+    str_a = check_realloc(str_a, (count+1)* sizeof(char*));
     return str_a;
 }
 

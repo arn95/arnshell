@@ -153,7 +153,13 @@ int sys_proc(char** argv, int argc){
         exit(1);
     } else if(pid==0) {
         //printf("Child pid: %d\n",getpid());
-        status = execvp(argv[0], argv);
+        if (argc > 1)
+            status = execvp(argv[0], argv);
+        else if (argc == 1) {
+            argv[1] = "";
+            argv[2] = NULL;
+            status = execvp(argv[0], argv);
+        }
         if (status == -1) {
             perror("Invalid command");
             //fprintf(stdout, "Invalid command\n");
