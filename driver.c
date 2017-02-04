@@ -145,14 +145,29 @@ int echo(char** thing, int size){
     return 1;
 }
 
-int sys_proc(char** argv, int argc){
+int sys_proc(char** argv, int argc, int redir){
+
+    int fd = NULL;
+
     int status;
     int pid;
     pid=fork();
     if(pid<0) {
+        perror("Failed fork");
         exit(1);
-    } else if(pid==0) {
+    } else if (pid==0) {
         //printf("Child pid: %d\n",getpid());
+
+        if (redir != -1){
+            fd = creat(argv[redir+1], 0644);
+            if (fd < 0){
+                perror("Failed to open output file");
+                exit(0);
+            }
+            dup2(fd,STDOUT_FILENO);
+            close(fd);
+        }
+
         if (argc > 1)
             status = execvp(argv[0], argv);
         else if (argc == 1) {
@@ -162,15 +177,11 @@ int sys_proc(char** argv, int argc){
         }
         if (status == -1) {
             perror("Invalid command");
-            //fprintf(stdout, "Invalid command\n");
             return status;
         }
     } else {
         waitpid(pid,&status,0);
         return 0;
-//        printf("Parent pid: %d\n ",getpid());
-//        printf("Nothing to execute here\n\n");
-//        exit(1);
     }
 
     return 1;
@@ -179,7 +190,7 @@ int sys_proc(char** argv, int argc){
 int check_redir(char** argv, int argc){
     int i;
     for(i = 0; i<argc; i++){
-        if(strcmp(argv[i], ">") == 1){
+        if(strcmp(argv[i], ">") == 0){
             if (i+1 < argc){
                 return i;
             }
@@ -189,16 +200,14 @@ int check_redir(char** argv, int argc){
 }
 
 int run_proc(char* argv[], int argc){
-    int redir_file_index = check_redir(argv,argc)+1;
-    //if (redir_file_index != -1)
+    int status = check_redir(argv,argc);
 
     if (argc != 0){
         if (strcmp(argv[0], "exit") == 0)
             exit(1);
         else {
-            return sys_proc(argv, argc);
+            return sys_proc(argv, argc, status);
         }
-
     }
     return NO_CMD;
 }
