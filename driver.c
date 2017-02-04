@@ -156,7 +156,7 @@ int sys_proc(char** argv, int argc){
         if (argc > 1)
             status = execvp(argv[0], argv);
         else if (argc == 1) {
-            argv[1] = "";
+            argv[1] = NULL;
             argv[2] = NULL;
             status = execvp(argv[0], argv);
         }
