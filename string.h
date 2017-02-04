@@ -11,7 +11,7 @@
 
 
 int string_char_index(char*, char);
-char** string_tokenize(char* input, char delim, int* size);
+char** string_tokenize(char* input, char delim, int* size, int mode);
 char* string_trim_leading(char*);
 char* string_trim_trailing(char*);
 char* string_trim(char*);

@@ -40,7 +40,7 @@ char* string_cut(char* s, char** slice, int index){
     return result;
 }
 
-char** string_tokenize(char* input, char delim, int* size){
+char** string_tokenize(char* input, char delim, int* size, int mode){
     int len = (int)strlen(input);
     char** str_a = check_malloc(len*sizeof(char*));
     char* input_dup = strdup(input);
@@ -57,13 +57,24 @@ char** string_tokenize(char* input, char delim, int* size){
             char* slice = (char*) check_malloc((index+1)* sizeof(char));
             char* left = string_cut(input_dup,&slice, index);
             input_dup = left;
-            str_a[count++] = slice;
+
+            if (mode == 2){
+                str_a[count++] = string_trim(strdup(left));
+                break;
+            } else if (mode == 1){
+                str_a[count++] = slice;
+                break;
+            } else {
+                str_a[count++] = slice;
+            }
         }
     }
     if (!string_is_empty(input_dup)){
-        str_a[count++] = strdup(input_dup);
-        free(input_dup);
+        if (mode != 2 && mode != 1) {
+            str_a[count++] = strdup(input_dup);
+        }
     }
+    free(input_dup);
     *size = count;
     str_a = check_realloc(str_a, (count)* sizeof(char*));
     return str_a;
@@ -75,7 +86,7 @@ char* string_trim_leading(char* s){
     while (isspace(*temp)){
         temp = ++temp;
     }
-    result = check_realloc(result, (int) (strlen(temp) * sizeof(char)));
+    //result = check_realloc(result, (int) (strlen(temp) * sizeof(char)));
     strcpy(result, temp);
     free(s);
     return result;
@@ -97,7 +108,7 @@ char* string_trim_trailing(char* s){
         memmove( temp, temp+1, strlen(temp) );
     while( *temp && isspace(temp[strlen(temp)-1]) )
         temp[strlen(temp)-1] = 0;
-    result = check_realloc(result, (int) ((strlen(temp)) * sizeof(char)));
+    //result = check_realloc(result, (int) ((strlen(temp)) * sizeof(char)));
     strcpy(result, temp);
     free(s);
     return result;

@@ -13,7 +13,6 @@
 #include "string.h"
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
@@ -46,7 +45,8 @@ int run_shell(){
 
             int i;
             for(i = 0; i<*size_p; i++){
-                free(tokens[i]);
+                char* temp = tokens[i];
+                free(temp);
             }
             free(tokens);
         }
@@ -76,14 +76,34 @@ char** parse_cmd(int* size_p){
     }
     //char** tokens = string_tokenize("ls -l", ' ', size_p);
     if (strlen(cmd_store) > 0){
-        char** tokens = string_tokenize(cmd_store, ' ', size_p);
-        //fix for execvp
-        tokens[*size_p] = NULL;
-        //
-        free(cmd_store);
-        return tokens;
+        //testing if its echo
+        char** tokens;
+        char** echo_token = string_tokenize(cmd_store, ' ', size_p,1);
+        if (*size_p != 0){
+            if (strcmp(*echo_token, "echo") == 0){
+                char** echo_args = string_tokenize(cmd_store, ' ', size_p, 2);
+                char** result = (char**) check_malloc(3*sizeof(char*));
+                result[0] = strdup(*echo_token);
+                result[1] = strdup(*echo_args);
+                free(*echo_token);
+                free(*echo_args);
+                free(echo_token);
+                free(echo_args);
+                free(cmd_store);
+                //fix for execvp
+                result[2] = NULL;
+                *size_p = 2;
+                return result;
+            } else {
+                free(echo_token);
+                tokens = string_tokenize(cmd_store, ' ', size_p, 0);
+                //fix for execvp
+                tokens[*size_p] = NULL;
+                free(cmd_store);
+                return tokens;
+            }
+        }
     }
-    //free(tokens);
     free(cmd_store);
     return NULL;
 }
@@ -112,12 +132,14 @@ int cat(char** paths, int size){
 int echo(char** thing, int size){
     int i;
     for(i = 1; i<size; i++){
-        fprintf(stdout, "%s", thing[i]);
+        char* temp = thing[i];
+        //fprintf(stdout, "%s", thing[i]);
+        printf(thing[i]);
         if (i+1 < size){
-            fprintf(stdout, " ");
+            printf(" ");
         }
     }
-    fprintf(stdout, "\n");
+    printf("\n");
     return 1;
 }
 
@@ -160,18 +182,15 @@ int check_redir(char** argv, int argc){
 
 int run_proc(char* argv[], int argc){
     int redir_file_index = check_redir(argv,argc)+1;
-    if (redir_file_index != -1)
+    //if (redir_file_index != -1)
 
     if (argc != 0){
-        if (strcmp(argv[0], "cat") == 0){
-            return cat(argv, argc);
-        } else if (strcmp(argv[0], "echo") == 0){
-            return echo(argv, argc);
-        } else if (strcmp(argv[0], "exit") == 0) {
+        if (strcmp(argv[0], "exit") == 0)
             exit(1);
-        } else {
+        else {
             return sys_proc(argv, argc);
         }
+
     }
     return NO_CMD;
 }
