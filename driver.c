@@ -118,6 +118,7 @@ int echo(char** thing, int size){
         }
     }
     fprintf(stdout, "\n");
+    return 1;
 }
 
 int sys_proc(char** argv, int argc){
