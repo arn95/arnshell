@@ -111,41 +111,6 @@ char** parse_cmd(int* size_p){
     return NULL;
 }
 
-
-
-int cat(char** paths, int size){
-    int i;
-    for(i = 1; i<size; i++){
-        char linebuf[4096];
-        FILE *file = fopen(paths[i], "r");
-        if (file != NULL){
-            while (fgets(linebuf, sizeof(linebuf), file)) {
-                //fprintf(stdout, "%s", linebuf);
-                printf(linebuf);
-            }
-            //fprintf(stdout, "\n");
-            printf("\n");
-        } else {
-            perror("File cannot be opened");
-        }
-        fclose(file);
-    }
-}
-
-int echo(char** thing, int size){
-    int i;
-    for(i = 1; i<size; i++){
-        char* temp = thing[i];
-        //fprintf(stdout, "%s", thing[i]);
-        printf(thing[i]);
-        if (i+1 < size){
-            printf(" ");
-        }
-    }
-    printf("\n");
-    return 1;
-}
-
 int sys_proc(char** argv, int argc, int redir){
 
     int status;
