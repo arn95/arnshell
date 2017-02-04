@@ -35,7 +35,8 @@ int run_shell(){
         int size = 0; int* size_p; size_p = &size;
 
         char** tokens = parse_cmd(size_p);
-
+        char* t1 = tokens[0];
+        char* t2 = tokens[1];
         if (tokens != NULL){
             status = run_proc(tokens, *size_p);
             if (status == INVALID_CMD){
@@ -94,14 +95,15 @@ char** parse_cmd(int* size_p){
                 result[2] = NULL;
                 *size_p = 2;
                 return result;
-            } else {
-                free(echo_token);
-                tokens = string_tokenize(cmd_store, ' ', size_p, 0);
-                //fix for execvp
-                tokens[*size_p] = NULL;
-                free(cmd_store);
-                return tokens;
             }
+        }
+        free(echo_token);
+        tokens = string_tokenize(cmd_store, ' ', size_p, 0);
+        if (*size_p != 0){
+            //fix for execvp
+            tokens[*size_p] = NULL;
+            free(cmd_store);
+            return tokens;
         }
     }
     free(cmd_store);
