@@ -1,13 +1,18 @@
 I hereby declare that I have abided the honor code.
 
 • Structure
-
-Driver: driver.c driver.h 
-String: string.c string.h 
-Helpers: helpers.c helpers.h 
-t1: test file 
-t2: test file
-
+  
+  Driver:
+    driver.c driver.h
+  String:
+    string.c string.h
+  Helpers:
+    helperc. helpers.h
+  t1:
+    test file
+  t2:
+    test file
+    
 ````
 NOTE: The rest of the files such as .idea or CMakeLists.txt are files that CLion uses to compile my project.
 They are not neeeded at all.
@@ -17,7 +22,7 @@ All of the parts of the shell are included in Driver with the exception of the t
 which is included in String
 
 NOTE: Helpers is used for fast failing memory alloc and realloc, and some macros that I rarely used. 
-Idea borrowed from Binkley, however I did not copy paste his code. All I had was an .o file from last year.
+Idea borrowed from Binkley, however I did not copy paste his code. All I had was an .o .h file from last year.
 
 • Compile
 
@@ -75,17 +80,3 @@ After these steps are done execvp is called in each child to run the designated 
 In the end the parent process has to close everything in the "data transport utility array layer" and then wait for children to finish their jobs.
 
 The while loop runs again and waits for user input. Forever.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
