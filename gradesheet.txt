@@ -1,0 +1,33 @@
+CS466 Assignment 1 GradeSheet
+Grade: 78/100
+* a few hours late, which is a 5% late penalty
+
+If an aspect does not work in the overall shell, more partial credit can be earned if it works in the separate program for that subpart. Each aspect is initially graded in the full program, with subprograms tested when the full program does not function correctly.
+
+5/5: Prints a prompt and reads a line at a time
+10/15: Correctly parses a line into tokens - can't handle tabs, but can handle multiple spaces. Crashes on empty line.
+7/7: Creates a new process for running input from user - appears to work
+10/10: Child process execs the program specified from input, using correct tokens as parameters
+8/8: Parent waits for child to finish before letting user enter next command
+7/10: Program runs until ctrl-D is pressed - only runs through 1-2 commands, then ends. It doesn't seem to matter which commands are given. Adding error output at each exit() command shows that it is incorrectly reading EOF after running a command, so there seems to be an issue resetting for the next run through the loop.
+7/7: IO Redirection with > sends to file 
+2/3: Piping works - piping does not work correctly. Must hit ctrl-D for result of piping to be output and return to the shell's prompt. Code appears to be close to correct, however.
+
+9/10: malloc/free and char* used correctly in tokenize, and proper memory management used
+* freeing argv after execvp in the same process as execvp is called in only works if the call to execvp fails. If execvp works it takes over that process and no other code you've written in that process will run. You should free the memory after everything is done with that command, in the parent thread.
+5/5: Redirection properly uses hint on closing file descriptor
+5/5: reasonable design
+3/5: error messages are used in proper places to catch potential errors
+* I had to add my own error messages at error spots to debug the code.
+* need to check if fork succeeded each time you call it
+
+5/10: README contains all necessary information, good code practices followed, and comments are helpful
+* readme is useful
+* comments are completely missing. 
+* you are too fond of while(1). While there are situations where it is appropriate, overuse is bad. In all of these cases you could have written a while loop with an actual boolean expression in it, which is much better quality programming.
+
+Extra credit: Piping and redirection work correctly together
+* no
+
+Other comments:
+A number of unused variable warnings. It's always a good idea to go back and clean up your code.
