@@ -1,4 +1,4 @@
-Structure
+## Structure
   
   Driver:
   
@@ -32,13 +32,13 @@ which is included in String
 NOTE: Helpers is used for fast failing memory alloc and realloc, and some macros that I rarely used. 
 Idea borrowed from Binkley, however I did not copy paste his code. All I had was an .o .h file from last year.
 
-• Compile
+### Compile
 
 ````
 make clean && make
 ````
 
-• Run
+### Run
 
 ````
 ./shell [arg1,arg2...]
@@ -47,7 +47,7 @@ make clean && make
 ./shell
 ````
 
-• How it works
+## Description
 
 In the initial stages of the development everything was centered around proper tokenizing and running functions 
 such as echo() and cat() (not needed for the final shell).
@@ -88,3 +88,18 @@ After these steps are done execvp is called in each child to run the designated 
 In the end the parent process has to close everything in the "data transport utility array layer" and then wait for children to finish their jobs.
 
 The while loop runs again and waits for user input. Forever.
+
+## Features
+
+### What works
+* Prints a prompt and reads a line at a time
+* Correctly parses a line into tokens - can't handle tabs, but can handle multiple spaces. Crashes on empty line.
+* Creates a new process for running input from user - appears to work
+* Child process execs the program specified from input, using correct tokens as parameters
+* Parent waits for child to finish before letting user enter next command
+* IO Redirection with > sends to file
+
+### What doesn't work
+* Program runs until ctrl-D is pressed - only runs through 1-2 commands, then ends. It doesn't seem to matter which commands are given. Adding error output at each exit() command shows that it is incorrectly reading EOF after running a command, so there seems to be an issue resetting for the next run through the loop.
+* Piping does not work correctly. Must hit ctrl-D for result of piping to be output and return to the shell's prompt. Code appears to be close to correct, however.
+* Piping and redirection don't work correctly together
