@@ -1,6 +1,4 @@
-I hereby declare that I have abided the honor code.
-
-• Structure
+Structure
   
   Driver:
   
